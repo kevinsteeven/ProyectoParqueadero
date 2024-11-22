@@ -17,7 +17,7 @@ def configurar_parqueadero(cupos_carros, cupos_motos,entrada_salida):
     return f"Esta es la {entrada_salida} de un parqueadero configurado con {cupos_carros} cupos para carros y {cupos_motos} cupos para motos."
 
 
-def process_image(entrada_salida):
+def process_image(entrada_salida, image):
     """
     Captura una imagen y gestiona la entrada al parqueadero.
     """
@@ -26,7 +26,7 @@ def process_image(entrada_salida):
             return "El parqueadero no ha sido configurado."
 
         # Capturar imagen usando la cámara
-        image = capture_image()
+        #image = capture_image()
 
         # Convierte la imagen en bytes para enviarla a Azure
         _, encoded_image = cv2.imencode('.jpg', image)  # Aquí se usa cv2
@@ -77,9 +77,10 @@ def build_interface():
 
         # Clasificación de vehículos
         gr.Markdown("### Clasificación de vehículos")
+        image = gr.Image(label="Input", sources="webcam")
         classify_button = gr.Button("Detectar Vehículo")
         classify_output = gr.Textbox(label="Resultado de Clasificación", interactive=False)
-        classify_button.click(process_image, inputs=[entrada_salida_input], outputs=classify_output)
+        classify_button.click(process_image, inputs=[entrada_salida_input,image], outputs=classify_output)
 
         # Liberación de cupos
         gr.Markdown("### Liberación de cupos")
