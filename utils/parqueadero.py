@@ -9,10 +9,10 @@ class Parqueadero:
     def ingresar_vehiculo(self, tipo, entrada_salida):
         if tipo == "carro" and entrada_salida == "Entrada" and self.disponibles_carros > 0:
             self.disponibles_carros -= 1
-            return f"Carro ingresado. Cupos disponibles: {self.disponibles_carros} carros."
+            return f"Carro ingresado. La tarifa por hora es $3500. Cupos disponibles: {self.disponibles_carros} carros."
         elif tipo == "moto" and entrada_salida == "Entrada" and self.disponibles_motos > 0:
             self.disponibles_motos -= 1
-            return f"Moto ingresada. Cupos disponibles: {self.disponibles_motos} motos."
+            return f"Moto ingresada. La tarif apor hora es $2000. Cupos disponibles: {self.disponibles_motos} motos."
         elif tipo == "moto" and entrada_salida == "Salida":
             self.disponibles_motos += 1
             return f"Moto saliendo. Cupos disponibles: {self.disponibles_motos} motos."
